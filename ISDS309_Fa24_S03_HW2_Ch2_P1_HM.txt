@@ -1,0 +1,198 @@
+HM
+ISDS 309 - 03 (Fall 24)
+09/10/2024 
+Assignment 2 / Chapter 2 Part 1 / Ex: 1, 3, 5, 7, 10, 11 
+
+=========================================================
+
+1. What is the numeric value of each of the following expressions, as evaluated by the C# programming language? (2.5)
+
+a) 2 + 5 * 3, numeric value = 17
+b) 9 / 4 + 10, numeric value = 12
+c) 10 / 3, numeric value = 3
+d) 21 % 10, numeric value = 1
+e) (5 − 1) * 3, NO RESULT, mulitple errors
+f) 37 / 5, numeric value = 7
+g) 64 % 8, numeric value = 0
+h) 5 + 2 * 4 − 3 * 4, NO RESULT, mulitple errors
+i) 3 * (2 + 5) / 5, numeric value = 4
+j) 28 % 5 − 2, NO RESULT, multiple errors
+k) 19 / 2 / 2, numeric value = 4
+l) 28 / (2 + 4), numeric value = 4
+
+=========================================================
+
+3. Choose the best data type for each of the following, so that no memory storage is wasted. Give an example of a typical value that would be held by the variable and explain why you chose the type you did. (2.1, 2.3)
+
+a) the number of years of school you have completed 
+
+ANSWER: An ideal data type would be a Unsigned byte or "byte."  It can cover the minimum and maximum number of years in school.
+Typical Value: From 0 to 255.
+
+b) your final grade in this class 
+
+ANSWER: An ideal data type would be a Char. Grades are given out with a letter grade like, 
+"A, B, C, D, F." 
+Typical Value: 1 byte.
+
+c) the population of China 
+
+ANSWER: An ideal type would be a Signed integer or a "int." It is large enough hold a value more than 2 billion. China's population in 2022 is 1.412 billion. Population number of a country is never a number with a decimal. 
+Typical Value: From -2,147,483,647 to 2,147,483,647.
+
+d) the number of passengers on an airline flight 
+
+ANSWER: An ideal data type would be a Unsigned byte or "byte." The average number of passengers on a scheduled flight is 160 seats. However, it can be less or more.
+Typical Value: From 0 to 255.
+
+e) one player’s score in a Scrabble game 
+
+ANSWER: An ideal data type would be Signed short or "short." The highest score score was 830 by Michael Cresta. A short can hold a score up to 32,767. 
+Typical Range: From −32,768 to 32,767
+
+f) the number of Electoral College votes received by a U.S. presidential candidate 
+
+ANSWER: An ideal data type would be Signed short or "short." The Electoral College consists of a total of 538 electors. A majority of 270 electoral votes is required to elect. 
+Typical Range: From −32,768 to 32,767
+
+g) the number of days with below-freezing temperatures in a winter in Miami, Florida 
+
+ANSWER: An ideal data type would be a Unsigned byte or "byte." Florida rarely experiences freezing temperatures. 
+Typical Value: From 0 to 255.
+
+
+h) one team’s score in a Major League Baseball game
+
+ANSWER: An ideal data type would be a Unsigned byte or "byte."  It can hold a score value up to 127 homeruns in a MLB game. 
+Typical Range: From -128 to 127.
+
+=========================================================
+
+5. Write a C# program named InchesToCentimeters that declares a named constant that holds the number of centimeters in an inch: 2.54. Also declare a variable to represent a measurement in inches, and assign a value. Display the measurement in both inches and centimeters—for example, 3 inches is 7.62 centimeters. (2.5, 2.10)
+
+using System;
+
+namespace InchesToCentimeters
+{
+    internal class InchesToCentimeters
+    {
+        public static int centInInch;
+
+        static void Main(string[] args)
+        {
+            const double  
+            CENT_IN_INCH = 2.54;
+            int inches;
+            inches = 1;
+            Console.WriteLine(inches + " inches" + " is " + CENT_IN_INCH + " centimeters ", "InchesToCentimeters");
+        }
+    }
+}
+
+=========================================================
+
+7. Write a C# program named ProjectedRaises that includes a named constant representing next year’s anticipated 4 percent raise for each employee in a company. Also declare variables to represent the current salaries for three employees. Assign values to the variables, and display, with explanatory text, next year’s salary for each employee. (2.5, 2.10)
+
+using System;
+
+namespace ProjectedRaises
+{
+    internal class ProjectedRaises
+    {
+        public static int EMPLOY_WITH_RAISES;
+
+        static void Main(string[] args)
+        {
+            //expected 4% salary raise
+            const double EMPLOY_WITH_RAISES = 0.04;
+           
+            //current employee salaries
+            int Sarah;
+            Sarah = 45811;
+            int Elizabeth;
+            Elizabeth = 56739;
+            int Xavier;
+            Xavier = 95831;
+
+            Console.WriteLine("The company has decided to increase next year salaries of Sarah, Elizabeth, and Xavier by 4%");
+            Console.WriteLine();
+
+            //this will display out a line that shows the salary with the 4% raise
+            Console.WriteLine("Next year, Sarah's salary will be $" + ((Sarah * EMPLOY_WITH_RAISES) + Sarah) + ".");
+            Console.WriteLine();
+
+            //this will display out a line that shows the salary with the 4% raise
+            Console.WriteLine("Next year, Elizabeth's salary will be $" + ((Elizabeth * EMPLOY_WITH_RAISES) + Elizabeth) + ".");
+            Console.WriteLine();
+
+            //this will display out a line that shows the salary with the 4% raise
+            Console.WriteLine("Next year, Xavier's salary will be $" + ((Xavier * EMPLOY_WITH_RAISES) + Xavier) + ".");
+            Console.WriteLine();
+        }
+    }
+}
+
+=========================================================
+
+10. Write a program named HoursAndMinutes that declares a variable to represent minutes worked on a job. Assign a value to the variable. Display the value in hours and minutes. For example, 197 minutes becomes 3 hours and 17 minutes. (2.5, 2.10, 2.11)
+
+using System;
+
+namespace HoursAndMinutes
+{
+    public class HoursAndMinutes
+    {
+        static void Main()
+        {
+            Console.Write("Enter Minutes here: ");
+            int minutes = int.Parse(Console.ReadLine());
+
+            int hours = minutes / 60;
+            int remainingMinutes = minutes % 60;
+
+            Console.WriteLine(minutes + " minutes is " + hours + " hours and " + remainingMinutes + " minutes.");
+        }
+    }
+}
+
+=========================================================
+
+11. Write a program named Eggs that declares four variables to hold the number of eggs produced in a month by each of four chickens. Assign a value to each variable. Sum the eggs, then display the total in dozens and eggs. For example, a total of 127 eggs is 10 dozen and 7 eggs. (2.5, 2.10, 2.11)
+
+using System;
+
+namespace Eggs
+{
+    public class Eggs
+    {
+        private static int totalEggs;
+
+        static void Main()
+        {
+            int chickenone;
+            chickenone = 21;
+            int chickentwo;
+            chickentwo = 22;
+            int chickenthree;
+            chickenthree = 23;
+            int chickenfour;
+            chickenfour = 24;
+
+            totalEggs = chickenone + chickentwo + chickenthree + chickenfour;
+
+            int dozen = totalEggs / 12;
+
+            int remainingEggs = totalEggs % 12;
+
+            Console.WriteLine("A total of " + (chickenone + chickentwo + chickenthree + chickenfour) + " eggs is about " + dozen + " dozen and " + remainingEggs + " eggs");
+        }
+    }
+}
+
+
+
+
+
+
+
+

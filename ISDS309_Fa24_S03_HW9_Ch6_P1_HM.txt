@@ -1,0 +1,462 @@
+HM
+ISDS 309 - 03 (Fall 24)
+12/3/2024
+Assignment 9 / Chapter 6 Part 1 / Programming Exercises: 1, 3, 5, 6, 7, 8.  
+
+Exercises 5, 6 (Console)
+- Use Console 
+- Redo assignments 5 and 6, use 2-dimensional instead of 1-dim arrays (don't use parallel arrays)
+
+===============================================
+
+1. Write a program named ArrayDemo that stores an array of 10 integers. Until the user enters a sentinel value, allow the user four options:
+
+- to view the list in order from the first to last position in the stored array,
+- to view the list in order from the last to first position,
+- to choose a specific position to view, or
+- to quit the application. (6.1, 6.2)
+
+
+using System;
+
+namespace hw9
+{
+    internal class ArrayDemo
+    {
+        static void Main()
+        {
+            Console.WriteLine("Type '1001' to view first to last position");
+            Console.WriteLine("Type '1002' to view last to first position");
+            Console.WriteLine("Type '1003' to view a number from 1 to 10");
+            Console.WriteLine("Type '1004' to quit the application\n");
+
+            int[] values = new int[10];
+            int displayNumber = 0;
+            int position;
+
+            for (int i = 0; i < 10; i++)
+            {
+                Console.Write("Enter Number: ");
+                displayNumber = int.Parse(Console.ReadLine());
+
+                values[i] = displayNumber;
+
+            }
+
+            while (true)
+            {
+                Console.WriteLine("\nType '1001' to view first to last position");
+                Console.WriteLine("Type '1002' to view last to first position");
+                Console.WriteLine("Type '1003' to view a number from 1 to 10");
+                Console.WriteLine("Type '1004' to quit the application\n");
+
+                Console.Write("Enter: ");
+                displayNumber = int.Parse(Console.ReadLine());
+
+                switch (displayNumber)
+                {
+                    case 1001:
+                        for (int x = 0; x < 10; x++)
+                        {
+                            Array.Sort(values);
+                            Console.WriteLine(values[x]);
+                        }
+                        break;
+
+                    case 1002:
+                        Array.Reverse(values);
+                        for (int j = 0; j < 10; j++)
+                        {
+                            Console.WriteLine(values[j]);
+                        }
+                        break;
+
+                    case 1003:
+                        Console.Write("Enter Position to view value: ");
+                        position = int.Parse(Console.ReadLine());
+                        Console.WriteLine(values[position]);
+                        break;
+
+                    case 1004:
+                        Console.WriteLine("END: You may close the application");
+                        break;
+
+                    default:
+                        Console.WriteLine("ERROR: Invalid Option/Selection");
+                        break;
+                }
+            }
+        }
+    }
+} 
+
+
+
+
+===============================================
+3. Write a program named TemperaturesComparison that allows a user to input five daily Fahrenheit temperatures that must range from −30 to 130; if a temperature is out of range, require the user to reenter it. If no temperature is lower than any previous one, display a message Getting warmer. If every temperature is lower than the previous one, display a message Getting cooler. If the temperatures are not entered in either ascending or descending order, display a message It’s a mixed bag. Finally, display the temperatures in the order they were entered, and then display the average of the temperatures. (6.1, 6.2)
+
+
+using System;
+
+namespace hw9
+{
+    internal class TemperaturesComparison
+    {
+        static void Main()
+        {
+            Console.WriteLine("Enter 5 Temperatures from -30F to 130F \n");
+
+            double enterTemp = 0;
+            double sum = 0;
+            double counter = 0;
+            double average = 0;
+
+            double[] temperature = new double[5];
+
+            for (int i = 0; i < 5; i++)
+            {
+                Console.Write("Enter Temperature (F): ");
+                enterTemp = double.Parse(Console.ReadLine());
+
+                if (enterTemp > -30 && enterTemp < 130)
+                {
+                    temperature[i] = enterTemp;
+                }
+                else
+                {
+                    Console.WriteLine("ERROR");
+                    Console.Write("Enter a valid temperature between (-30 and 130F): ");
+                    enterTemp = int.Parse(Console.ReadLine());
+                }
+
+            }
+
+            if (temperature[0] < temperature[1] && temperature[1] < temperature[2] && temperature[2] < temperature[3] && temperature[3] < temperature[4])
+            {
+                Console.WriteLine("\nIt's getting WARMER!");
+            }
+            else
+            if (temperature[0] > temperature[1] && temperature[1] > temperature[2] && temperature[2] > temperature[3] && temperature[3] > temperature[4])
+            {
+                Console.WriteLine("\nIt's getting COLDER!");
+            }
+            else
+                Console.WriteLine("\nIt's a mixed bag!");
+
+
+            Console.WriteLine("\nTemp 1: " + temperature[0]);
+            Console.WriteLine("Temp 2: " + temperature[1]);
+            Console.WriteLine("Temp 3: " + temperature[2]);
+            Console.WriteLine("Temp 4: " + temperature[3]);
+            Console.WriteLine("Temp 5: " + temperature[4]);
+
+            sum = temperature[0] + temperature[1] + temperature[2] + temperature[3] + temperature[4];
+            counter = 5;
+            average = sum / counter;
+
+            Console.WriteLine("\nAverage Temperature (F) = {0}F", average);
+        }
+    }
+} 
+
+
+
+
+
+===============================================
+5. Write a program called DeliveryCharges for the package delivery service in Exercise 4. The program should again use an array that holds the 10 zip codes of areas to which the company makes deliveries. Create a parallel array containing 10 delivery charges that differ for each zip code. Prompt a user to enter a zip code, and then display either a message indicating the price of delivery to that zip code or a message indicating that the company does not deliver to the requested zip code. (6.1, 6.2, 6.3)
+
+
+1-D, 1 DIMENTIONAL Solution: 
+
+
+
+using System;
+
+namespace hw9
+{
+    internal class DeliveryCharges
+    {
+        static void Main()
+        {
+            int[] validZipCodes = {90620, 90621, 90622, 90623, 90624, 90625, 90626, 90627, 90628, 90629 };
+            double[] prices = {20.99, 21.88, 23.48, 35.49, 76.95, 64.96, 97.43, 10.85, 57.69, 69.42 };
+
+            int zipCode;
+            double zipPrice = 0;
+
+            bool isValidZip = false;
+
+            Console.Write("Enter a Zip Code: ");
+            zipCode = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < validZipCodes.Length; i++)
+            {
+                if (zipCode == validZipCodes[i])
+                {
+                    isValidZip = true;
+                    zipPrice = prices[i];
+                }
+            }
+            if (isValidZip)
+            {
+                Console.WriteLine("Zip Code Price is ${0}", zipPrice);
+            }
+            else
+            {
+                Console.WriteLine("ERROR: Delivery not delivered to {0}", zipCode);
+            }
+        }
+    }
+} 
+
+
+
+
+2-D, 2 DIMENTIONAL Solution: 
+
+
+
+using System;
+
+namespace hw9
+{
+    internal class ResortPrices
+    {
+        static void Main()
+        {
+            double[,] valid = new double[2, 10]
+            {
+                {90620, 90621, 90622, 90623, 90624, 90625, 90626, 90627, 90628, 90629},
+                {20.99, 21.88, 23.48, 35.49, 76.95, 64.96, 97.43, 10.85, 57.69, 69.42 }
+            };
+
+            double zipCode;
+            double zipPrice = 0;
+            bool isValidZip = false;
+
+            Console.Write("Enter a Zip Code: ");
+            zipCode = Convert.ToDouble(Console.ReadLine());
+
+            for (int i = 0; i < valid.GetLength(1); i++)
+            {
+                if (zipCode == valid[0, i])
+                {
+                    zipPrice = valid[1, i];
+                    isValidZip = true;
+                    break;
+                }
+            }
+
+            if (isValidZip)
+            {
+                Console.WriteLine("Delivery Price: ${0}", zipPrice);
+            }
+            else
+            {
+                Console.WriteLine("ERROR: Delivery not delivered to {0}", zipCode);
+            }
+        }
+    }
+}
+
+
+
+
+
+===============================================
+6. The Chat-A-While phone company provides service to six area codes and charges the per-minute rates for phone calls shown in Figure 6-25. Write a program named ChatAWhile that stores the area codes and rates in parallel arrays and allows a user to enter an area code and the length of time for a call in minutes. Display the total cost of the call or an error message if the area code is not found. (6.1, 6.2, 6.3)
+
+
+1-D, 1 DIMENTIONAL Solution: 
+
+
+
+
+using System;
+
+namespace hw9
+{
+    internal class ChatAWhile
+    {
+        static void Main()
+        {
+            int[] validAreaCode = { 262, 414, 608, 715, 815, 920 };
+            double[] price = { 0.07, 0.10, 0.05, 0.16, 0.24, 0.24 };
+
+            int areaCode;
+            double areaPrice = 0;
+            double areaCallTime = 0;
+            double callCost = 0;
+
+            bool isValidArea = false;
+
+            Console.Write("Area Code: ");
+
+            Console.Write("");
+            areaCode = Convert.ToInt32(Console.ReadLine());
+            for (int i = 0; i < validAreaCode.Length; i++)
+            {
+                if (areaCode == validAreaCode[i])
+                {
+                    isValidArea = true;
+                    areaPrice = price[i];
+                }
+            }
+            if (isValidArea)
+            {
+                Console.Write("Enter Duration of Call (minutes): ");
+                areaCallTime = Convert.ToInt32(Console.ReadLine());
+
+                if (areaCallTime > 0 && areaCallTime < 1440)
+                {
+                    Console.Write("\nPer Minute Rate");
+                    Console.WriteLine(" ${0}", areaPrice);
+
+                    callCost = areaCallTime * areaPrice;
+
+                    Console.WriteLine("Cost of Call: {0}", callCost);
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nERROR: No Price for entered area code: {0}", areaCode);
+            }
+        }
+    }
+} 
+
+
+
+
+
+2-D, 2 DIMENTIONAL Solution: 
+
+
+
+
+
+
+
+using System;
+
+namespace hw9
+{
+    internal class ChatAWhile
+    {
+        static void Main()
+        {
+            double[,] valid = new double[2, 6]
+            {
+                {262, 414, 608, 715, 815, 920},
+                {0.07, 0.10, 0.05, 0.16, 0.24, 0.24}
+            };
+
+            int areaCode;
+            double areaPrice = 0;
+            double areaCallTime = 0;
+            double callCost = 0;
+
+            bool isValidArea = false;
+
+            Console.Write("Area Code: ");
+            areaCode = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 0; i < valid.GetLength(1); i++)
+            {
+                if (areaCode == valid[0, i])
+                {
+                    isValidArea = true;
+                    areaPrice = valid[1, i];
+                    break;
+                }
+            }
+
+            if (isValidArea)
+            {
+                Console.Write("Enter Duration of Call (minutes): ");
+                areaCallTime = Convert.ToInt32(Console.ReadLine());
+
+                if (areaCallTime > 0 && areaCallTime < 1440)
+                {
+                    Console.Write("\nPer Minute Rate");
+                    Console.WriteLine(" ${0}", areaPrice);
+
+                    callCost = areaCallTime * areaPrice;
+
+                    Console.WriteLine("Total Cost of Call: ${0}", callCost);
+                }
+                else
+                {
+                    Console.WriteLine("Invalid duration. Please enter a duration between 1 and 1439 minutes.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nERROR: No Price for entered area code: {0}", areaCode);
+            }
+        }
+    }
+}
+
+
+
+
+
+===============================================
+7. Write a program for The Carefree Resort named Resort
+Prices that prompts the user to enter the number of days for a resort stay. Then display the price per night and the total price. Nightly rates are $200 for one or two nights; $180 for three or four nights; $160 for five, six, or seven nights; and $145 for eight nights or more. (6.1, 6.2, 6.3)
+
+
+using System;
+
+namespace hw9
+{
+    internal class ResortPrices
+    {
+        static void Main()
+        {
+            int[] validDays = { 1, 3, 5, 8 };
+            int[] prices = { 200, 180, 160, 144 };
+
+            Console.WriteLine("THE CAREFREE RESORT");
+
+            Console.Write("\nEnter Duration of Stay: ");
+            int timeStay = Convert.ToInt32(Console.ReadLine());
+
+            int timePrice = 0;
+            bool validStay = false;
+            for (int i = 0; i < validDays.Length; i++)
+            {
+                if (timeStay >= validDays[i])
+                {
+                    timePrice = prices[i];
+                    validStay = true;
+                }
+            }
+
+            if (validStay)
+            {
+                int totalCost = timePrice * timeStay;
+
+                Console.WriteLine("\nNightly Rate: ${0}", timePrice);
+                Console.WriteLine("\nTotal Cost: ${0}", totalCost);
+            }
+            else
+            {
+                Console.WriteLine("\nInvalid Duration of Stay. Please enter a valid number of days.");
+            }
+        }
+    }
+}
+
+
+
+
+===============================================
+8. Danielle, Edward, and Fatima are three salespeople at Holiday Homes. Write an application named HomeSalesWithArrays that prompts the user for a salesperson’s initial (D, E, or F). Issue an error message for any invalid initials entered; the valid initials are stored in an array. Either uppercase or lowercase initials are valid. While the user does not type Z, continue by prompting for the amount of a sale. In an array, keep a running total of the amounts sold by each salesperson. After the user types Z or z for an initial, display each salesperson’s initial and total. Display a grand total for all sales. If two or more salespeople’s totals are tied, display an appropriate message; otherwise, display the initial of the salesperson with the highest total. (6.1, 6.2)
+
+
+
+I am not doing this because this takes too long. 
+

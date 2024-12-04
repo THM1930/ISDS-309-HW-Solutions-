@@ -1,0 +1,277 @@
+HM
+ISDS 309 - 03 (Fall 24)
+09/17/2024 
+Assignment 2 / Chapter 2 Part 2 / #2, 6, 8, 9, 12-15 
+
+=========================================================
+2. What is the value of each of the following Boolean expressions? (2.6)
+
+a. 5 > 4, True
+b. 3 <= 3, True
+c. 2 + 4 > 5, True
+d. 6 == 7, False
+e. 2 + 4 <= 6, True
+f. 3 + 4 == 4 + 3, True
+g. 1 != 2, True
+h. 2 != 2, False
+i. −5 == 7−2, False
+j. 3 + 9 <= 0, False
+
+
+
+=========================================================
+6. Convert the InchesToCentimeters program to an interactive application named InchesToCentimeterslnteractive. Instead of assigning a value to the variable that holds inches, accept the value from the user as input. (2.5, 2.10, 2.11)
+
+using System;
+
+namespace InchesToCentimeters
+{
+    internal class InchesToCentimeters
+    {
+        public static double inches;
+
+        static void Main()
+        {
+            double centimeters, inches;
+
+            Console.Write("Enter number of inches: ");
+            inches = int.Parse(Console.ReadLine());
+
+            centimeters = inches * 2.54;
+
+            Console.WriteLine(inches + " inches is " + centimeters + " centimeters");
+
+        }
+    }
+}
+
+=========================================================
+8. Convert the ProjectedRaises class to an interactive application named ProjectedRaisesInteractive. Instead of assigning values to the salaries, accept them from the user as input. (2.5, 2.10, 2.11)
+
+using System;
+
+namespace ProjectedRaisesInteractive
+{
+    internal class ProjectedRaisesInteractive
+    {
+        public const double NEW_RAISES = 0.04;
+
+        static void Main()
+        {
+            //declare variables and consts
+            double salary;
+
+            //expected 4% salary raise
+            const double NEW_RAISES = 0.04;
+
+            //this takes the inputed value from the user
+            Console.Write("Enter the current salary: ");
+            salary = int.Parse(Console.ReadLine());
+
+            //this will display out a line that shows the salary with the 4% raise
+            Console.WriteLine("Next year, the salary will be $" + ((salary * NEW_RAISES) + salary) + " based of the 4% raise.");
+            Console.WriteLine();
+        }
+    }
+}
+
+=========================================================
+9. Malcolm Movers charges a base rate of $200 per move plus $150 per hour and $2 per mile. Write a program named MoveEstimator that prompts a user for and accepts estimates for the number of hours in a job and the number of miles involved in the move. The program must also display the total moving fee. (2.5, 2.10, 2.11)
+
+using System;
+
+namespace MoveEstimator
+{
+    internal class MoveEstimator
+    {
+        public static int baseRate;
+
+        static void Main()
+        {
+            //declared variables and itemized rates
+            baseRate = 200;
+            int hourRate = 150;
+            int distanceRate = 2;
+            int miles, hour;
+
+            Console.Write("Enter the estimated hours needed for the Job: ");
+            hour = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+
+            Console.Write("Enter the estimated miles for the Job: ");
+            miles = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+
+            Console.WriteLine("Based of the estimated hours and distance entered, the total move cost of the job will be $" + (baseRate + (miles * distanceRate) + (hour * hourRate)));
+            Console.WriteLine();
+        }
+    }
+}
+
+=========================================================
+12. Modify the Eggs program to create a new one named EggsInteractive that prompts the user for and accepts a number of eggs for each chicken. (2.5, 2.11)
+
+using System;
+
+namespace Eggs
+{
+    public class Eggs
+    {
+        public static int totalEggs;
+
+        static void Main()
+        {
+            int chickenone, chickentwo, chickenthree, chickenfour, dozen, remainingEggs, totalEggs;
+
+            Console.Write("Enter number of eggs for Chicken 1: ");
+            chickenone = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter number of eggs for Chicken 2: ");
+            chickentwo = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter number of eggs for Chicken 3: ");
+            chickenthree = int.Parse(Console.ReadLine());
+
+            Console.Write("Enter number of eggs for Chicken 4: ");
+            chickenfour = int.Parse(Console.ReadLine());
+
+            Console.WriteLine();
+
+            totalEggs = chickenone + chickentwo + chickenthree + chickenfour;
+
+            dozen = totalEggs / 12;
+            remainingEggs = totalEggs % 12;
+
+            Console.WriteLine("A total of " + totalEggs + " eggs is about " + dozen + " dozen and " + remainingEggs + " eggs");
+        }
+    }
+}
+
+
+=========================================================
+13. Write a program named MakeChange that calculates and displays the conversion of an entered number of dollars into currency denominations—twenties, tens, fives, and ones. For example, $113 is 5 twenties, 1 ten, 0 fives, and 3 ones. (2.5, 2.10, 2.11)
+
+
+using System;
+
+namespace MakeChange
+{
+    public class MakeChange
+    {
+        public static int totalDollars;
+
+        static void Main()
+        {
+            int newDollars, twenty, ten, five, one;
+            
+            Console.Write("Enter Dollar Amount: $");
+            totalDollars = int.Parse(Console.ReadLine());
+
+            newDollars = totalDollars;
+
+            twenty = newDollars / 20;
+            newDollars %= 20;
+            ten = newDollars / 10;
+            newDollars %= 10;
+            five = newDollars / 5;
+            newDollars %= 5;
+            one = newDollars / 1;
+
+            Console.WriteLine();
+
+            Console.WriteLine("$" + totalDollars + " is " + twenty + " twenties, " + ten + " ten, " + five + " five, and " + one + " ones.");
+        }
+    }
+}
+
+
+=========================================================
+14. Write a program named TestsInteractive that prompts a user for eight test scores and displays the average of the test scores to two decimal places. (2.4, 2.5, 2.11)
+
+using System;
+
+namespace TestsInteractive
+{
+    public class TestsInteractive
+    {
+        public static double totalScores;
+
+        static void Main()
+        {
+            double scoreOne, scoreTwo, scoreThree, scoreFour, scoreFive, scoreSix, scoreSeven, scoreEight, totalScores;
+            int totalNumber;
+            
+            Console.WriteLine("Enter the test scores below: ");
+            Console.WriteLine();
+
+            Console.Write("Score 1: ");
+            scoreOne = double.Parse(Console.ReadLine());
+
+            Console.Write("Score 2: ");
+            scoreTwo = double.Parse(Console.ReadLine());
+
+            Console.Write("Score 3: ");
+            scoreThree = double.Parse(Console.ReadLine());
+
+            Console.Write("Score 4: ");
+            scoreFour = double.Parse(Console.ReadLine());
+
+            Console.Write("Score 5: ");
+            scoreFive = double.Parse(Console.ReadLine());
+
+            Console.Write("Score 6: ");
+            scoreSix = double.Parse(Console.ReadLine());
+
+            Console.Write("Score 7: ");
+            scoreSeven = double.Parse(Console.ReadLine());
+
+            Console.Write("Score 8: ");
+            scoreEight = double.Parse(Console.ReadLine());
+
+
+            Console.WriteLine();
+
+            totalScores = scoreOne + scoreTwo + scoreThree + scoreFour + scoreFive + scoreSix + scoreSeven + scoreEight;
+            totalNumber = 8;
+
+            Console.WriteLine("The average test score is: " + Math.Round(totalScores / totalNumber, 2));
+            Console.WriteLine();
+        }
+    }
+}
+
+
+
+=========================================================
+15. Write a program named FahrenheitToCelsius that accepts a temperature in Fahrenheit from a user and converts it to Celsius by subtracting 32 from the Fahrenheit value and multiplying the result by 5/9. Display both values to one decimal place. (2.5, 2.10, 2.11)
+
+using System;
+
+namespace FahrenheitToCelsius
+{
+    public class FahrenheitToCelsius
+    {
+        public static double Fahrenheit;
+
+        static void Main()
+        {
+            double Fahrenheit, celsius;
+
+            Console.Write("Enter the temperature in Fahrenheit: ");
+            Fahrenheit = double.Parse(Console.ReadLine());
+            Fahrenheit = Math.Round(Fahrenheit, 1);
+
+            celsius = (Fahrenheit - 32);
+            celsius = Math.Round((celsius * 5 / 9), 1);
+
+            Console.WriteLine();
+            Console.WriteLine("Temperature is " + Fahrenheit + " Fahrenheit");
+            Console.WriteLine("Temperature is " + celsius + " Celsius");
+            Console.WriteLine();
+        }
+    }
+}
+
+
+=========================================================
+

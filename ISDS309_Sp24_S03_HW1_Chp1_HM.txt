@@ -1,0 +1,117 @@
+
+HM 					// use your own name
+ISDS 309 - 03 (Fall 24)				// course info (semester)
+09/04/2024					// date
+Assignment 1 / Chapter 1 / Ex: 1 - 7		// assignment detail
+
+=========================================================
+Ex1) 
+Indicate whether each of the following C# programming language identifiers is legal or illegal. If it is legal, indicate whether it is a conventional identifier for a class.
+
+	a) electricBill,	Legal 	(Unconventional)
+	b) ElectricBill, 	Legal 	(Conventional)
+	c) Electric bill, 	Illegal
+	d) Static		Legal 	(Unconventional)
+	e) void			Illegal (Reserved)
+	f) #ssn			Illegal 
+	g) Ay56we		Legal	(Unconventional)		
+	h) Theater_Tickets	Legal   (Conventional)
+	i) 212AreaCode		Illegal
+	j) heightInCentimeters	Legal   (Conventional)
+	k) Zip23891		Legal	(Conventional)
+	i) Void			Legal	(Unconventional)
+
+=========================================================
+Ex2)
+Name at least three attributes that might be appropriate for each of the following classes:
+
+a) TVShow:         Cast, Channel, Producer 
+b) Party:             Invitees, Attendees, Host
+c) JobApplication:   Resume, Interview, Experience
+d) CheckingAccount: Checking Balance, Report, Address
+
+
+=========================================================
+Ex3)
+Name at least two classes to which each of these objects might belong: (1.3)
+
+a) your cousin: Human, FamilyMember
+b) a pencil: WritingTool, Stationary
+c) Egypt: Country, Tourism
+d) Thomas Jefferson: President, Man, Human
+
+=========================================================
+Ex4)
+Write, compile, and test a program named PersonalInfo that displays a person’s name, birthdate, work phone number, and cell phone number.
+
+using System;
+public class PersonalInfo
+{
+    public static void Main()
+    {
+        Console.WriteLine ("Name: John Doe");
+        Console.WriteLine ("Birthdate: July 1, 2012");
+        Console.WriteLine ("Work Phone Number: (562)-123-4567");
+        Console.WriteLine ("Cellphone Number: (714)-482-4729");
+    }
+}
+
+=========================================================
+Ex5)
+Write, compile, and test a program named Lyrics that displays at least four lines of your favorite song. 
+
+using System;
+public class Lyrics
+{
+    public static void Main()
+    {
+        Console.WriteLine ("Is this the real life? Is this just fantasy?");
+        Console.WriteLine ("Caught in a landslide, no escape from reality");
+        Console.WriteLine ("Open your eyes, look up to the skies and see");
+        Console.WriteLine ("I'm just a poor boy, I need no sympathy");
+    }
+}
+
+=========================================================
+Ex6)
+Write, compile, and test a program named Comments that displays a statement that defines program comments. Include at least one block comment and one line comment in the program.
+
+using System;
+public class Comments
+{
+    public static void Main()
+    {
+        //This is a line comment. Do you like to use line comments? 
+
+        /* Using a multi-line comment or block comment is useful to others
+           It can also be used to tell information that may not be ideal on a single line */
+
+        Console.WriteLine("The definition of a program comment: allows an explanation or summarization on what is happening");
+    }
+}
+
+=========================================================
+Ex7)
+Write, compile, and test a program named StopSign that displays a pattern similar to the image shown in Figure 1-24. 
+
+using System;
+public class StopSign
+{
+    public static void Main()
+    {
+        Console.WriteLine("  XXXXXXXXXXX ");
+        Console.WriteLine(" X           X ");
+        Console.WriteLine("X     STOP    X ");
+        Console.WriteLine(" X           X ");
+        Console.WriteLine("  XXXXXXXXXXX ");
+        Console.WriteLine("       X      ");
+        Console.WriteLine("       X      ");
+        Console.WriteLine("       X      ");
+        Console.WriteLine("       X      ");
+        Console.WriteLine("       X      ");
+    }
+}
+
+=========================================================
+
+

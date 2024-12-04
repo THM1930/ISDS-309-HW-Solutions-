@@ -1,0 +1,568 @@
+HM
+ISDS 309 - 03 (Fall 24)
+10/19/2024 
+Assignment 6 / Chapter 4 Part 1 / Prog Ex: 2-6 / Game Zone 1-2;
+
+=========================================================
+
+2. Write a program named Tweeting that accepts a user’s message and determines whether it is short enough for a social networking service that does not accept messages of more than 280 characters. (4.3)
+
+using System;
+
+namespace hw6
+{
+    internal class Tweeting
+    {
+        static void Main()
+        {
+            const int LENGTHLIMIT = 280;
+            string enterMessage;
+
+            Console.Write("Enter your message: ");
+            enterMessage = Console.ReadLine();
+
+            int length = enterMessage.Length;
+            if (length < LENGTHLIMIT)
+                Console.WriteLine("{0} is valid", length);
+            else
+                Console.WriteLine("{0} exceeds the maximum characters allowed. Must be lower than {1} characters", length, LENGTHLIMIT);
+
+        }
+    }
+}
+ 
+
+
+=========================================================
+3. Write a program named Admission for a college’s admissions office. The user enters a numeric high school grade point average (for example, 3.2) and an admission test score. Display the message Accept if the student meets either of the following requirements:
+
+A grade point average of 3.0 or higher and an admission test score of at least 60
+
+A grade point average of less than 3.0 and an admission test score of at least 80
+
+If the student does not meet either of the qualification criteria, display Reject. (4.4)
+
+
+using System;
+
+namespace hw6
+{
+    internal class Admission
+    {
+        static void Main()
+        {
+            string gpaInput;
+            double gpaRequire = 3.0;
+            double testRequire = 60;
+            double testRequire2 = 80;
+
+            string testInput;
+
+            Console.Write("Enter GPA: ");
+            gpaInput = Console.ReadLine();
+            double gpa = Convert.ToDouble(gpaInput);
+
+            Console.Write("Enter Test Score: ");
+            testInput = Console.ReadLine();
+            double test = Convert.ToDouble(testInput);
+
+            if (gpa >= gpaRequire && test >= testRequire)
+            Console.WriteLine("Accepted");
+            
+            else 
+            if (gpa < gpaRequire && test >= testRequire2)
+            Console.WriteLine("Accepted");
+            
+            else
+            Console.WriteLine("Reject");
+                     
+            Console.WriteLine("");
+        }
+    }
+}
+ 
+
+
+
+
+
+=========================================================
+
+4. The Saffir-Simpson Hurricane Scale classifies hurricanes into five categories numbered 1 through 5. Write an application named Hurricane that outputs a hurricane’s category based on the user’s input of the wind speed. Category 5 hurricanes have sustained winds of at least 157 miles per hour. The minimum sustained wind speeds for categories 4 through 1 are 130, 111, 96, and 74 miles per hour, respectively. Any storm with winds of less than 74 miles per hour is not a hurricane. (4.8)
+
+using System;
+
+namespace hw6
+{
+    internal class Hurricane
+    {
+        static void Main()
+        {
+            string enterMilesPerHour;
+            int speed;
+            int catFive = 157;
+            int catFour = 130;
+            int catThree = 111;
+            int catTwo = 96;
+            int catOne = 74;
+
+
+            Console.Write("Enter wind speed in miles per hour: ");
+            enterMilesPerHour = Console.ReadLine();
+            speed = Convert.ToInt32(enterMilesPerHour);
+
+            if (speed >= catFive)
+            Console.WriteLine("The Hurricane is a Catagory 5");
+
+            else
+            if (speed >= catFour)
+            Console.WriteLine("Hurricane is a Catagory 4");
+            
+            else
+            if (speed >= catThree)
+            Console.WriteLine("Hurricane is a Catagory 3");
+            
+            else
+            if (speed >= catTwo)
+            Console.WriteLine("Hurricane is a Catagory 2");
+            
+            else
+            if (speed >= catOne)
+            Console.WriteLine("Hurricane is a Catagory 1");
+            
+            else
+            if (speed < catOne)
+            Console.WriteLine("This is not a hurricane");
+        }
+    }
+}
+ 
+
+
+
+
+=========================================================
+
+5a. Write a program named CheckMonth that prompts a user to enter a birth month. If the value entered is greater than 12 or less than 1, display an error message; otherwise, display the valid month with a message such as 3 is a valid month.
+
+
+using System;
+
+namespace hw6
+{
+    internal class CheckMonth
+    {
+        static void Main()
+        {
+            string birthMonth;
+            int birthNumber;
+
+            Console.Write("Enter your birth month: ");
+            birthMonth = Console.ReadLine();
+            birthNumber = Convert.ToInt32(birthMonth);
+
+            if (birthNumber > 12 || birthNumber < 1)
+            {
+                Console.WriteLine("{0} is not a valid month", birthNumber);
+            }
+            else
+            if (birthNumber >= 1 && birthNumber <= 12)
+            {
+                Console.WriteLine("{0} is a valid month", birthNumber);
+
+            }
+        }
+    }
+}
+ 
+
+
+=========================================================
+
+5b. Write a program named CheckMonth2 that prompts a user to enter a birth month and day. Display an error message if the month is invalid (not 1 through 12) or the day is invalid for the month (for example, not between 1 and 31 for January or between 1 and 29 for February). If the month and day are valid, display them with a message. (4.3, 4.4)
+
+
+using System;
+
+namespace hw6
+
+
+{
+    internal class CheckMonth2
+    {
+        static void Main()
+        {
+            //this is my int and strings
+            string birthMonth, birthDate;
+            int birthMonthNumber, birthDateNumber;
+
+            //allows user to input birth month
+            Console.Write("Enter your birth month: ");
+            birthMonth = Console.ReadLine();
+            birthMonthNumber = Convert.ToInt32(birthMonth);
+
+
+            if (birthMonthNumber >= 1 && birthMonthNumber <= 12)
+            {
+
+
+                //allows user to input their birth day
+                Console.Write("Enter your birth day: ");
+                birthDate = Console.ReadLine();
+                birthDateNumber = Convert.ToInt32(birthDate);
+                switch (birthMonthNumber)
+                {
+                    case 1:
+                        if (birthDateNumber >= 1 && birthDateNumber <= 31)
+                        {
+                            Console.WriteLine("{0} and {1}", birthMonthNumber, birthDateNumber);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Day", birthMonthNumber);
+                        }
+                        break;
+                    case 2:
+                        if (birthDateNumber >= 1 && birthDateNumber <= 29)
+                        {
+                            Console.WriteLine("{0} and {1}", birthMonthNumber, birthDateNumber);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Day", birthMonthNumber);
+                        }
+                        break;
+                    case 3:
+                        if (birthDateNumber >= 1 && birthDateNumber <= 31)
+                        {
+                            Console.WriteLine("{0} and {1}", birthMonthNumber, birthDateNumber);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Day", birthMonthNumber);
+                        }
+                        break;
+                    case 4:
+                        if (birthDateNumber >= 1 && birthDateNumber <= 30)
+                        {
+                            Console.WriteLine("{0} and {1}", birthMonthNumber, birthDateNumber);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Day", birthMonthNumber);
+                        }
+                        break;
+                    case 5:
+                        if (birthDateNumber >= 1 && birthDateNumber <= 31)
+                        {
+                            Console.WriteLine("{0} and {1}", birthMonthNumber, birthDateNumber);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Day", birthMonthNumber);
+                        }
+                        break;
+                    case 6:
+                        if (birthDateNumber >= 1 && birthDateNumber <= 30)
+                        {
+                            Console.WriteLine("{0} and {1}", birthMonthNumber, birthDateNumber);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Day", birthMonthNumber);
+                        }
+                        break;
+                    case 7:
+                        if (birthDateNumber >= 1 && birthDateNumber <= 31)
+                        {
+                            Console.WriteLine("{0} and {1}", birthMonthNumber, birthDateNumber);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Day", birthMonthNumber);
+                        }
+                        break;
+                    case 8:
+                        if (birthDateNumber >= 1 && birthDateNumber <= 31)
+                        {
+                            Console.WriteLine("{0} and {1}", birthMonthNumber, birthDateNumber);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Day", birthMonthNumber);
+                        }
+                        break;
+                    case 9:
+                        if (birthDateNumber >= 1 && birthDateNumber <= 30)
+                        {
+                            Console.WriteLine("{0} and {1}", birthMonthNumber, birthDateNumber);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Day", birthMonthNumber);
+                        }
+                        break;
+                    case 10:
+                        if (birthDateNumber >= 1 && birthDateNumber <= 31)
+                        {
+                            Console.WriteLine("{0} and {1}", birthMonthNumber, birthDateNumber);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Day", birthMonthNumber);
+                        }
+                        break;
+                    case 11:
+                        if (birthDateNumber >= 1 & birthDateNumber <= 30)
+                        {
+                            Console.WriteLine("{0} and {1}", birthMonthNumber, birthDateNumber);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Day", birthMonthNumber);
+                        }
+                        break;
+                    case 12:
+                        if (birthDateNumber >= 1 && birthDateNumber <= 31)
+                        {
+                            Console.WriteLine("{0} and {1}", birthMonthNumber, birthDateNumber);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Day", birthMonthNumber);
+                        }
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid Month");
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid Month");
+            }
+
+            Console.WriteLine("");
+        }
+    }
+}
+ 
+
+
+=========================================================
+
+6. Account numbers sometimes contain a check digit that is the result of a mathematical calculation. The inclusion of the digit in an account number helps ascertain whether the number is a valid one. Write an application named CheckDigit that asks a user to enter a four-digit account number and determines whether it is a valid number. The number is valid if the fourth digit is the remainder when the number represented by the first three digits of the four-digit number is divided by 7. For example, 7770 is valid, because 0 is the remainder when 777 is divided by 7. (4.3)
+
+
+using System;
+
+namespace hw6
+
+{
+    internal class CheckDigit
+    {
+        static void Main()
+        {
+            int requiredRemainderValue = 7;
+            int outputThreeDigits;
+            int outputFourthDigit;
+
+            string enteredAccountNumber, threeDights, getFourthDigit;
+
+
+            Console.Write("Enter a four-digit account number: ");
+            enteredAccountNumber = Console.ReadLine();
+            threeDights = enteredAccountNumber.Substring(0, 3);
+            outputThreeDigits = Convert.ToInt32(threeDights);
+
+            getFourthDigit = enteredAccountNumber.Substring(3);
+            outputFourthDigit = Convert.ToInt32(getFourthDigit);
+
+            if (outputThreeDigits % requiredRemainderValue == outputFourthDigit)
+            {
+                Console.WriteLine("Account Number is VALID");
+            }
+            else
+            {
+                Console.WriteLine("Account Number is INVALID");
+            }
+        }
+    }
+}
+ 
+
+
+
+==========================================================
+GameZone #1
+
+Write a program named GuessingGame that generates a random number between 1 and 10. (In other words, in the preceding example code, MIN is 1 and MAX is 11.) Ask a user to guess the random number, then display the random number and a message indicating whether the user’s guess was too high, too low, or correct. (4.3)
+
+
+using System;
+
+namespace hw6
+
+{
+    internal class GuessingGame
+    {
+        static void Main()
+        {
+            string enteredInput;
+            int enteredNumber;
+
+            Random num = new Random();
+            int randomNumber = num.Next(1, 11);
+
+
+            Console.Write("Guess a random number between 1 and 10: ");
+            enteredInput = Console.ReadLine();
+            enteredNumber = Convert.ToInt32(enteredInput);
+
+
+            if (enteredNumber == randomNumber)
+            {
+                Console.WriteLine("");
+                Console.WriteLine("Your number is SPOT ON!");
+                Console.WriteLine("");
+
+            }
+            else
+            {
+                if (enteredNumber < randomNumber)
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("Your number is TOO LOW!");
+                    Console.WriteLine("");
+                    Console.WriteLine("The correct number is " + randomNumber);
+                    Console.WriteLine("");
+
+                }
+                else
+                {
+                    if (enteredNumber > randomNumber)
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("Your number is TOO HIGH");
+                        Console.WriteLine("");
+                        Console.WriteLine("The correct number is " + randomNumber);
+                        Console.WriteLine("");
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+==========================================================
+GameZone #2
+
+In the game Rock Paper Scissors, two players simultaneously choose one of three options: rock, paper, or scissors. If both players choose the same option, then the result is a tie. However, if they choose differently, the winner is determined as follows:
+
+Rock beats scissors, because a rock can break a pair of scissors.
+
+Scissors beats paper, because scissors can cut paper.
+
+Paper beats rock, because a piece of paper can cover a rock.
+
+Create a game in which the computer randomly chooses rock, paper, or scissors. Let the user enter a character, r, p, or s, each representing one of the three choices. Then, determine the winner. Save the application as RockPaperScissors. (4.3)
+
+
+using System;
+
+namespace hw6
+
+{
+    internal class RockPaperScissors
+{
+        static void Main()
+        {
+            string yourChoice;
+            string yourChoiceSymbol;
+
+            int rock = 1;
+            int paper = 2;
+            int scissors = 3;
+
+            Random num = new Random();
+            int computerChoice = num.Next(1, 4);
+
+            Console.WriteLine("Choices: r = rock, p = paper, s = scissors ");
+            Console.Write("Your Choice: ");
+
+            yourChoice = Console.ReadLine();
+            yourChoiceSymbol = Convert.ToString(yourChoice);
+
+            switch (yourChoiceSymbol)
+            {
+                case "r":
+                    {
+                        if (computerChoice == scissors)
+                            Console.WriteLine("YOU WIN! Rock beats Scissors ");
+                        else
+                            if (computerChoice == rock)
+                            {
+                            Console.WriteLine("Tied");
+                            }
+                                else
+                                {
+                                Console.WriteLine("Computer Choice: p");
+                                Console.WriteLine("\nYou Lose!\n");
+                                }
+                    }
+                    break;
+
+
+                case "p":
+                    {
+                        if (computerChoice == rock)
+                            Console.WriteLine("YOU WIN! Paper beats Rock ");
+                        else
+                            if (computerChoice == paper)
+                            {
+                            Console.WriteLine("Tied");
+                            }
+                                else
+                                {
+                                Console.WriteLine("Computer Choice: s");
+                                Console.WriteLine("\nYou Lose!\n");
+                                }
+                    }
+                    break;
+
+
+                case "s":
+                    {
+                        if (computerChoice == paper)
+                            Console.WriteLine("YOU WIN! Scissors beats Paper ");
+                        else
+                            if 
+                            (computerChoice == scissors)
+                            {
+                            Console.WriteLine("Tied");
+                            }
+                                else
+                                {
+                                Console.WriteLine("Computer Choice: r");
+                                Console.WriteLine("\nYou Lose!\n");
+                                }
+                    }
+                    break;
+
+
+                default:
+                    {
+                        Console.WriteLine("");
+                        Console.WriteLine("Invalid Choice: Please enter as shown");
+                        Console.WriteLine("");
+                    }
+                break ;
+            }
+        }
+    }
+}

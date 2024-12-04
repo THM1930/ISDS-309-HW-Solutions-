@@ -1,0 +1,403 @@
+HM
+ISDS 309 - 03 (Fall 24)
+11/3/2024
+Assignment 8 / Chapter 5 Part 2 / Programming Exercise: 6,7, 10-13 / GameZone 1, 2)
+===============================================
+6. Write an application named DisplayMultiplicationTable that displays a table of the products of every combination of two integers from 1 through 10. (5.1, 5.2, 5.4)
+
+using System;
+
+namespace DisplayMultiplicationTable
+{
+    internal class DisplayMultiplicationTable
+    {
+        static void Main(string[] args)
+        {
+            //display a multiplcation table from 1 to 10
+
+
+            const int X1 = 10;
+            const int X2 = 10;
+
+            Console.Write("\t");
+            for (int i = 1; i <= X1; i++)
+            {
+                Console.Write(i + "\t");
+  
+            }
+            Console.WriteLine("\t");
+
+            for (int i = 1; i <= X2; i++)
+            {
+                Console.Write(i + "\t");
+
+                for (int j = 1; j <= X2; j++)
+                {
+                    Console.Write((i * j) + "\t");
+                }
+                Console.WriteLine();
+
+            }
+            Console.WriteLine("\t");
+        }
+    }
+} 
+
+
+===============================================
+7. Write an application named MultiplicationTable that prompts the user for an integer value—for example, 7. Then display the product of every integer from 1 through 10 when multiplied by the entered value. (5.1, 5.2)
+
+using System;
+
+namespace MultiplicationTable
+{
+    internal class MultiplicationTable
+    {
+        static void Main(string[] args)
+        {
+            string numberInput;
+            int enterNumber = 0;
+
+            const int MAX = 10;
+
+            //ask user for number
+            Console.Write("Enter any interger: ");
+            numberInput = Console.ReadLine();
+            enterNumber = Convert.ToInt32(numberInput);
+
+            Console.WriteLine("Multiplication Table for {0} \n", enterNumber);
+
+            //display the product of every integer from 1-10
+            //when multiplied by the entered value
+
+            for (int i = 1; i <= MAX; ++i)
+            {
+                int total = enterNumber * i;
+                Console.WriteLine("{0} x {1} is = {2}", enterNumber,i, total);
+            }
+        }
+    }
+} 
+
+
+===============================================
+10. Write an application named Perfect that displays every perfect number from 1 through 10,000. A number is perfect if it equals the sum of all the smaller positive integers that divide evenly into it. For example, 6 is perfect because 1, 2, and 3 divide evenly into it and their sum is 6. (5.1, 5.2, 5.4, 5.5)
+
+using System;
+
+namespace Perfect
+{
+    internal class Perfect
+    {
+        static void Main()
+        {
+            const int MAX = 10000;
+            int total = 0;
+            int number;
+            int divisors;
+
+            for (number = 1; number <= MAX; number++)
+            {
+                total = 0;
+                for (divisors = 1; divisors <= number / 2 ; divisors++)
+                {
+                    if (number % divisors == 0)
+                    {
+                        {
+                            total += divisors;
+                        }
+                    }
+                }
+
+                if (total == number)
+                {
+                    Console.WriteLine(number + " is a perfect number");
+                }
+            }
+        }
+    }
+} 
+
+
+
+
+===============================================
+11. In a “You Do It” section of this chapter, you created a tipping table for patrons to use when analyzing their restaurant bills. Now, create a modified program named TippingTable3 in which each of the following values is obtained from user input: (5.1, 5.4)
+
+- The lowest tipping percentage
+- The highest tipping percentage
+- The lowest possible restaurant bill
+- The highest restaurant bill
+
+
+
+using System;
+
+namespace hw8
+{
+    internal class TippingTable3
+    {
+        static void Main()
+        {
+            double dinnerPrice = 10.00;
+            double tipRate;
+            double tip;
+
+            const double LOWRATE = 0.10;
+            const double MAXRATE = 0.25;
+            const double TIPSTEP = 0.05;
+            const double MAXDINNER = 100.00;
+            const double DINNERSTEP = 10.00;
+
+            Console.Write("Tip Range: 10% to 25%\n");
+            Console.Write("Money Range: $10 to $100\n\n");
+
+
+            Console.Write("Enter the lowest tip rate, Example 0.XX: \t");
+            string lowestTip = Console.ReadLine();
+            double lowTip = Convert.ToDouble(lowestTip);
+
+
+            Console.Write("Enter the highest tip rate, Example 0.XX: \t");
+            string highestTip = Console.ReadLine();
+            double highTip = Convert.ToDouble(highestTip);
+
+
+            Console.Write("Enter the lowest possible bill, Example XX: \t$");
+            string lowestBill = Console.ReadLine();
+            double lowBill = Convert.ToDouble(lowestBill);
+
+
+            Console.Write("Enter the highest possible bill, Example XX: \t$");
+            string highestBill = Console.ReadLine();
+            double highBill = Convert.ToDouble(highestBill);
+
+            Console.WriteLine("");
+
+            tipRate = lowTip;
+
+            Console.Write("   Price");
+            for (tipRate = lowTip; tipRate <= highTip; tipRate += TIPSTEP)
+                Console.Write("{0, 8}", tipRate.ToString("P"));
+            Console.WriteLine();
+            Console.WriteLine("----------------------------------------");
+
+            tipRate = lowTip;
+
+            while (lowBill <= highBill)
+            {
+                Console.Write("{0, 8}", lowBill.ToString("C"));
+                while (tipRate <= highTip)
+                {
+                    tip = lowBill * tipRate;
+
+                    Console.Write("{0, 8}", tip.ToString("F"));
+
+                    tipRate += TIPSTEP;
+                }
+                lowBill += DINNERSTEP;
+                tipRate = lowTip;
+
+                Console.WriteLine("");
+            }
+
+        }
+    }
+}
+
+
+
+
+
+
+===============================================
+12. Write a program named WebAddress that asks a user for a business name. Suggest a good Web address by adding www. to the front of the name, removing all spaces from the name, and adding .com to the end of the name. For example, a good Web address for Acme Plumbing and Supply is www.AcmePlumbingandSupply.com. (5.2)
+
+
+using System;
+
+namespace hw8
+{
+    internal class WebAddress
+    {
+        static void Main()
+        {
+            string businessName;
+            
+            Console.Write("Enter your business name: ");
+            businessName = Console.ReadLine();
+
+            string formatedBusinessName = businessName.Replace(" ", "");
+
+            Console.WriteLine("Web Address: www.{0}.com", formatedBusinessName);
+        }
+    }
+}
+
+
+
+
+
+===============================================
+13. Write a program named CountVowels that accepts a phrase from the user and counts the number of vowels in the phrase. For this exercise, count both uppercase and lowercase vowels, but do not consider y to be a vowel. (5.2)
+
+
+using System;
+
+namespace hw8
+{
+    internal class CountVowels
+    {
+        static void Main()
+        {
+            string userInput;
+            int vowelCount = 0;
+            int length;
+
+            Console.Write("Enter any phrase: ");
+
+            userInput = Console.ReadLine().ToUpper();
+
+            length = userInput.Length;
+
+
+            for (int i = 0; i < length; i++)
+            {
+                if (userInput.Substring(i, 1) == "A" || userInput.Substring(i, 1) == "E" || userInput.Substring(i, 1) == "I" || userInput.Substring(i, 1) == "O" || userInput.Substring(i, 1) == "U")
+                {
+                    vowelCount++;
+                }
+            }
+            Console.WriteLine("Number of vowels: {0}", vowelCount);
+        }
+    }
+}
+
+
+
+
+===============================================
+GameZone 1. Create a program called GuessingGame2 that generates a random number, allows a user to guess it, and displays a message indicating whether the guess is too low, too high, or correct. The user can continue to enter values until the correct guess is made. After the user guesses correctly, display the number of guesses made. (5.1)
+
+
+using System;
+
+namespace hw8
+
+{
+    internal class GuessingGame2
+    {
+        static void Main()
+        {
+            string enteredInput;
+            int enteredNumber;
+
+            Random num = new Random();
+            int randomNumber = num.Next(1, 11);
+
+
+            while (true)
+            {
+                while (true)
+                {
+                    Console.Write("Guess a random number between 1 and 10: ");
+                    enteredInput = Console.ReadLine();
+                    enteredNumber = Convert.ToInt32(enteredInput);
+
+
+                    if (enteredNumber == randomNumber)
+                    {
+                       Console.WriteLine("Your number is SPOT ON!");
+                       Console.WriteLine("The correct number is {0}\n", randomNumber);
+
+                    }
+                       else
+                       {
+                           if (enteredNumber < randomNumber)
+                           {
+                                    Console.WriteLine("Your number is TOO LOW!\n");
+                           }
+                           else
+                           {
+                               if (enteredNumber > randomNumber)
+                               {
+                                    Console.WriteLine("Your number is TOO HIGH\n");
+                               }
+                           }
+                       }
+                }
+            }
+        }
+    }
+}
+
+
+
+===============================================
+GameZone 2. Modify the GuessingGame2 program to create a program called GuessingGame3 in which the player is criticized for making a “dumb” guess. For example, if the player guesses that the random number is 4 and is told that the guess is too low, and then the player subsequently makes a guess lower than 4, display a message that the user should have known not to make such a low guess. (5.1)
+
+
+using System;
+
+namespace hw8
+{
+    internal class GuessingGame3
+    {
+        static void Main()
+        {
+            int enteredNumber = 0;
+            int previousSomeGuess = 0;
+
+            Random num = new Random();
+            int randomNumber = num.Next(1, 11);
+            bool initalSomeGuess = true;
+
+
+            while (true)
+            {
+                Console.Write("Guess a random number between 1 and 10: ");
+                if (!int.TryParse(Console.ReadLine(), out enteredNumber))
+                {
+                    Console.WriteLine("Please enter a valid number.");
+                    continue;
+                }
+
+                if (!initalSomeGuess)
+                {
+                    if ((previousSomeGuess < randomNumber && enteredNumber < previousSomeGuess) ||
+                        (previousSomeGuess > randomNumber && enteredNumber > previousSomeGuess))
+                    {
+                        Console.Write("Dumb Guess!\n");
+                    }
+                }
+
+                if (enteredNumber == randomNumber)
+                {
+                    Console.WriteLine("Your number is SPOT ON!");
+                    Console.WriteLine("The correct number is {0}\n", randomNumber);
+
+                    randomNumber = num.Next(1, 11);
+                    initalSomeGuess = true;
+                }
+                else
+                {
+                    if (enteredNumber < randomNumber)
+                    {
+                        Console.WriteLine("Your number is TOO LOW!\n");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Your number is TOO HIGH\n");
+                    }
+
+                    previousSomeGuess = enteredNumber;
+                    initalSomeGuess = false;
+                }
+            }
+        }
+    }
+}
+
+
+
+

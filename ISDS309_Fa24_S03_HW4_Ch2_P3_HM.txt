@@ -1,0 +1,99 @@
+HM
+ISDS 309 - 03 (Fall 24)
+09/24/2024 
+Assignment 4 / Chapter 2 Part 3 / #16, 17, and 18.
+
+=========================================================
+16. Create an enumeration named Month that holds values for the months of the year, starting with JANUARY equal to 1. Write a program named MonthNames that prompts the user for a month integer. Convert the user’s entry to a Month value and display it. (2.10, 2.11)
+
+
+using System;
+
+namespace MonthNames
+{
+    internal class MonthNames
+    {
+        enum Month : sbyte
+
+        { JANUARY = 1, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER, }
+
+        static void Main(string[] args)
+        {
+            Console.Write("Enter the month number: ");
+
+            int someMonth = int.Parse(Console.ReadLine());
+
+            string m = Enum.GetName(typeof(Month), someMonth);
+
+            Console.WriteLine(m);
+        }
+    }
+}
+
+
+
+=========================================================
+17. Create an enumeration named Planet that holds the names of the eight planets in our solar system, starting with MERCURY and ending with NEPTUNE. Write a program named Planets that prompts the user for a numeric position, and display the name of the planet that is in the requested position. (2.10, 2.11)
+
+
+using System;
+
+namespace PlanetNames
+{
+    internal class PlanetNames
+    {
+        enum Planet : sbyte
+
+        { MERCURY = 1, VENUS, EARTH, MARS, JUPITER, SATURN, URANUS, NEPTUNE, }
+
+        static void Main(string[] args)
+        {
+            Console.Write("Enter the Planet number: ");
+
+            int somePlanet = int.Parse(Console.ReadLine());
+
+            string p = Enum.GetName(typeof(Planet), somePlanet);
+
+            Console.WriteLine("Planet " + somePlanet + " is " + p);
+        }
+    }
+}
+
+
+
+=========================================================
+18. Pig Latin is a nonsense language. To create a word in pig Latin, you remove the first letter and then add the first letter and ay at the end of the word. For example, dog becomes ogday and cat becomes atcay. Write a program named PigLatin that allows the user to enter a word and displays the pig Latin version. (2.10, 2.11)
+
+
+using System;
+
+namespace PigLatin
+{
+    internal class PigLatin
+    {
+    
+        static void Main(string[] args)
+        {
+            string word;
+            
+            Console.Write("Enter any word to translate into Pig Latin: ");
+            word = (Console.ReadLine());
+
+            Console.Write(word + " in PigLatin would be: ");
+
+            word += word[0];
+
+            word = word.Remove(0, 1);
+
+            word += "ay";
+
+            Console.WriteLine(word);
+        }
+    }
+}
+
+
+
+
+
+=========================================================

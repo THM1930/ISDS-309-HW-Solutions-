@@ -1,0 +1,428 @@
+HM
+ISDS 309 - 03 (Fall 24)
+10/26/2024 
+Assignment 7 / Chapter 5 Part 1 / Programming Exercise: 1-5, 8, 9.
+
+=========================================================
+1. Write an application named SumFiveInts that allows the user to enter five integers and displays their sum. (5.1)
+
+using System;
+
+namespace hw7
+{
+    internal class SumFiveInts
+    {
+        static void Main()
+        {
+            string inputInterger1, inputInterger2, inputInterger3, inputInterger4, inputInterger5;
+            int outputInterger1, outputInterger2, outputInterger3, outputInterger4, outputInterger5, sumTotal;
+
+            {
+                Console.Write("Enter 1st Interger: ");
+                inputInterger1 = Console.ReadLine();
+
+                while (inputInterger1 == "")
+                {
+                    Console.Write("ERROR, Enter a 1st valid number: ");
+                    inputInterger1 = Console.ReadLine();
+                }
+            }
+
+            {
+                Console.Write("Enter 2nd Interger: ");
+                inputInterger2 = Console.ReadLine();
+
+                while (inputInterger2 == "")
+                {
+                    Console.Write("ERROR, Enter a 2nd valid number: ");
+                    inputInterger2 = Console.ReadLine();
+                }
+            }
+
+            {
+                Console.Write("Enter 3rd Interger: ");
+                inputInterger3 = Console.ReadLine();
+
+                while (inputInterger3 == "")
+                {
+                    Console.Write("ERROR: Enter a 3rd valid number: ");
+                    inputInterger3 = Console.ReadLine();
+                }
+            }
+
+            {
+                Console.Write("Enter 4th Interger: ");
+                inputInterger4 = Console.ReadLine();
+
+                while (inputInterger4 == "")
+                {
+                    Console.Write("ERROR: Enter a 4th valid number: ");
+                    inputInterger4 = Console.ReadLine();
+                }
+            }
+
+            {
+                Console.Write("Enter 5th Interger: ");
+                inputInterger5 = Console.ReadLine();
+
+                while (inputInterger5 == "")
+                {
+                    Console.Write("ERROR: Enter a 5th valid number: ");
+                    inputInterger5 = Console.ReadLine();
+                }
+            }
+
+            {
+                outputInterger1 = Convert.ToInt32(inputInterger1);
+                outputInterger2 = Convert.ToInt32(inputInterger2);
+                outputInterger3 = Convert.ToInt32(inputInterger3);
+                outputInterger4 = Convert.ToInt32(inputInterger4);
+                outputInterger5 = Convert.ToInt32(inputInterger5);
+
+                sumTotal = outputInterger1 + outputInterger2 + outputInterger3 + outputInterger4 + outputInterger5;
+
+                Console.WriteLine("The sum is " + sumTotal);
+
+            }
+        }
+    }
+}
+
+
+=========================================================
+2. Write an application named SumInts that allows the user to enter any number of integers continually until the user enters 999. Display the sum of the values entered, not including 999. (5.1)
+
+using System;
+
+
+namespace hw7
+{
+    internal class SumInts
+    {
+        static void Main()
+        {
+            string enteredInputString;
+            int inputNumber = 0;
+            const int MAXNUMBER = 999;
+            int sum = 0;
+
+            while (inputNumber < MAXNUMBER)
+            {
+                Console.Write("Enter intergers: ");
+                enteredInputString = Console.ReadLine();
+                inputNumber = Convert.ToInt32(enteredInputString);
+
+                sum += inputNumber;
+
+                Console.WriteLine("Sum is " + sum);
+
+            }
+
+            if (inputNumber >= MAXNUMBER)
+            {
+                Console.WriteLine("INVALID");
+
+            }
+        }
+    }
+}
+
+
+=========================================================
+3. Write an application named EnterUppercaseLetters that asks the user to type an uppercase letter from the keyboard. If the character entered is an uppercase letter, display OK; if it is not an uppercase letter, display an error message. The program continues until the user types an exclamation point. (5.1)
+
+using System;
+
+namespace hw7
+{
+
+    internal class EnterUppercaseLetters
+    {
+
+        static void Main()
+        {
+            string letterString;
+            char letterChar;
+            char letterChar2;
+
+            Console.Write("Enter an Upper Case Letter: ");
+            letterString = Console.ReadLine();
+            letterChar = Convert.ToChar(letterString);
+            letterChar2 = Char.ToUpper(letterChar);
+
+            if (letterChar == letterChar2)
+            {
+                while (letterChar == letterChar2)
+                {
+                    letterChar = Convert.ToChar(letterString);
+                    letterChar2 = Char.ToUpper(letterChar);
+                    Console.WriteLine("OK");
+                    letterChar++;
+
+
+                }
+            }
+            else 
+                if (letterChar != letterChar2)
+                {
+                    Console.WriteLine("ERROR");
+                }
+
+        }
+    }
+}
+
+
+=========================================================
+4. Write an application named DailyTemps that continually prompts a user for a series of daily high temperatures until the user enters a sentinel value. Valid temperatures range from –20 through 130 Fahrenheit. When the user enters a valid temperature, add it to a total; when the user enters an invalid temperature, display an error message. Before the program ends, display the number of temperatures entered and the average temperature. (5.1, 5.5)
+
+using System;
+
+namespace hw7
+{
+
+    internal class DailyTemps
+    {
+
+        static void Main()
+        {
+            string tempString;
+            double tempNumber;
+            double tempHigh = 130;
+            double tempLow = -20;
+
+            double sum = 0;
+            double counter = 0;
+
+
+            while (true)
+
+            {
+                Console.Write("Enter temperature: ");
+
+                tempString = Console.ReadLine();
+                tempNumber = Convert.ToDouble(tempString);                   
+
+
+                while (tempNumber > tempLow || tempNumber < tempHigh)
+                {
+                    sum += tempNumber;
+                    counter++;
+                    break;
+
+                }
+                
+
+
+                while (tempNumber < tempLow || tempNumber > tempHigh)
+                {
+                    sum -= tempNumber;
+                    counter--;
+
+                    Console.WriteLine("ERROR: Temperture outside acceptable range");
+
+                    Console.WriteLine("");
+                    Console.WriteLine("Average Temp: " + (sum / counter) + "F");
+                    Console.WriteLine("");
+                    break;
+                }
+            }
+        }
+    }
+}
+
+
+
+=========================================================
+5. Danielle, Edward, and Fatima are three salespeople at Holiday Homes. Write an application named HomeSales that prompts the user for a salesperson’s initial (D, E, or F). Either uppercase or lowercase initials are valid. While the user does not type Z, continue by prompting for the amount of a sale. Issue an error message for any invalid initials entered. Keep a running total of the amounts sold by each salesperson. After the user types Z or z for an initial, display each salesperson’s total, a grand total for all sales, and the name of the salesperson with the highest total. (5.1, 5.5)
+
+using System;
+
+namespace hw7
+{
+
+    //bruh
+
+    internal class HomeSales
+    {
+
+        static void Main()
+        {
+            string inputInital;
+            string inputStringSale;
+            double inputDoubleSale;
+
+            double daniellaSale = 0;
+            double edwardSale = 0;
+            double fatimaSale = 0;
+            double sum;
+
+
+            while (true)
+            {
+                Console.Write("Enter Saleperson inital (D, E, F): ");
+                inputInital = Console.ReadLine().ToUpper();
+
+                if (inputInital == "D" || inputInital == "E" || inputInital == "F")
+                {
+                    Console.Write("Enter Sale Amount in $");
+                    inputStringSale = Console.ReadLine();
+                    inputDoubleSale = Convert.ToDouble(inputStringSale);
+
+                    if (inputInital == "D")
+                    {
+                        daniellaSale += inputDoubleSale;
+                    }
+                    else
+                    if (inputInital == "E")
+                    {
+                        edwardSale += inputDoubleSale;
+                    }
+                    else
+                    if (inputInital == "F")
+                    {
+                        fatimaSale += inputDoubleSale;
+                    }
+
+                }
+                else
+                if (inputInital == "Z")
+                {
+                    sum = daniellaSale + edwardSale + fatimaSale;
+
+                    Console.WriteLine();
+                    Console.WriteLine("Daniella's Sales: {0}", daniellaSale.ToString("C2"));
+                    Console.WriteLine("Edward's Sales: {0}", edwardSale.ToString("C2"));
+                    Console.WriteLine("Fatima's Sales: {0}", fatimaSale.ToString("C2"));
+                    Console.WriteLine("");
+
+
+                    Console.WriteLine("Sum is {0}", sum.ToString("C2"));
+
+                    if (daniellaSale > edwardSale && daniellaSale > fatimaSale)
+                    {
+                        Console.WriteLine("The person with highest sales is Daniella");
+                        Console.WriteLine();
+                    }
+                    else
+                        if (edwardSale > daniellaSale && edwardSale > fatimaSale)
+                        {
+                            Console.WriteLine("The person with highest sales is Edward");
+                            Console.WriteLine();
+                        }
+                        else
+                            if (fatimaSale > daniellaSale && fatimaSale > edwardSale) 
+                            {
+                            Console.WriteLine("The person with highest sales is Fatima");
+                            Console.WriteLine();
+                            }
+                            else
+                                {
+                                Console.WriteLine("No one had sales");
+                                Console.WriteLine();
+                                }
+                    
+                }
+                else
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("ERROR: please enter appropriate initals");
+                    Console.WriteLine();
+                }
+            }
+        }
+    }
+}
+
+
+=========================================================
+8. Write an application named OddNums that displays all the odd numbers from 1 through 99. (5.1, 5.2)
+
+using System;
+
+namespace hw7
+{
+
+    internal class OddNums
+    {
+
+        static void Main()
+        {
+            int number = 1;
+            int numberLimit = 100;
+
+            while (number < numberLimit)
+            {
+                Console.WriteLine(number);
+                number++;
+                number++;
+            }
+        }
+    }
+}
+
+
+
+=========================================================
+9. Write an application named Sum200 that sums the integers from 1 through 200. Display the running total when the program is halfway complete (after the first 100 numbers), and at the end. (5.1, 5.2)
+
+using System;
+
+namespace hw7
+{
+
+    //bruh
+
+    internal class Sum200
+    {
+
+        static void Main()
+        {
+            string user = "";
+            string user2 = "a";
+            int number = 0;
+            int number2 = 0;
+
+            int halfSum = 100;
+            int fullSum = 200;
+
+            while (user == "")
+            {
+                number++;
+                number2 += number;
+
+
+                if (number < halfSum)
+                {
+                }
+                else
+                    if (number == halfSum)
+                {
+                    Console.WriteLine("Sum is {0}", number2);
+                    break;
+                }
+            }
+
+            while (user2 == "a")
+            {
+                number++;
+                number2 += number;
+
+                if (number < fullSum)
+                {
+                }
+                else
+                    if (number == fullSum)
+                    {
+                        Console.WriteLine("Sum is {0}", number2);
+                        Console.WriteLine("");
+                        break;
+                    }
+
+            }
+        }
+    }
+}
+
+
+
